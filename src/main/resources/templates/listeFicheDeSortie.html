@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+</head>
+<body>
+<div layout:fragment="content1">
+    <section class="section">
+        <div class="card">
+            <div class="card-header">Liste des fiches de sortie</div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Code</th>
+                        <th>Lieu de départ</th>
+                        <th>Lieu de Destination</th>
+                        <th>Conducteur</th>
+                        <th>Vehicule</th>
+                        <th>Action</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="fds:${fds}">
+                        <td th:text="${fds.id}"></td>
+                        <td th:text="${fds.code}"></td>
+                        <td th:text="${fds.lieuDepart}"></td>
+                        <td th:text="${fds.lieuDestination}"></td>
+                        <td th:text="${fds.conducteur.prenom}"></td>
+                        <td th:text="${fds.vehicule.immatriculation}"></td>
+                        <td>
+                            <a class="btn btn-info">Edit</a>
+                        </td>
+                        <td>
+                            <a onclick="return confirm('Etes vous sur ?')" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">copyright @ mamadou bhoye diallo 2022</div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

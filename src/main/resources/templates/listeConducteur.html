@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+              xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+              layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+</head>
+<body>
+    <div layout:fragment="content1">
+        <section class="section">
+            <div class="card">
+                <div class="card-header">Liste des conducteurs</div>
+                <div class="card-body">
+                    <div class="container">
+                        <form class="d-flex float-end" method="get" th:action="@{/listeConducteur}">
+                            <input class="dataTable-input" type="search" name="keyword" placeholder="Search" aria-label="Search" th:value="${keyword}">
+                        </form>
+                    </div>
+                    <div class="buttons">
+                        <a th:href="@{/conducteurAdd}" class="btn btn-primary">Ajouter</a>
+                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Telephone</th>
+                            <th>Date</th>
+                            <th>Adresse</th>
+                            <th>Action</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="conducteur:${listConducteur}">
+                            <td th:text="${conducteur.id}"></td>
+                            <td th:text="${conducteur.nom}"></td>
+                            <td th:text="${conducteur.prenom}"></td>
+                            <td th:text="${conducteur.telephone}"></td>
+                            <td th:text="${conducteur.dateNaissance}"></td>
+                            <td th:text="${conducteur.adresse}"></td>
+                            <td>
+                                <a class="btn btn-info" th:href="@{conducteurEdit(id=${conducteur.id}, keyword=${keyword}, page=${currentPage})}">Edit</a>
+                            </td>
+                            <td>
+                                <a onclick="return confirm('Etes vous sur ?')" class="btn btn-danger" th:href="@{delete(id=${conducteur.id}, keyword=${keyword}, page=${currentPage})}">Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <nav class="nav-pills">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li th:each="page, status:${pages}" th:class="${status.index == currentPage ? 'page-item active aria-current page ms-1' : 'page-item ms-1'}">
+                                <a th:text="${status.index}" class="page-link" th:href="@{listeConducteur(page=${status.index}, keyword=${keyword})}"></a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="card-footer">copyright @ mamadou bhoye diallo 2022</div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

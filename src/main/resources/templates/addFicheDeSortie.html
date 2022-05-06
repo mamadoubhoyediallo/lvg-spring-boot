@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content1">
+    <section class="section">
+        <div class="card col-md-9">
+            <div class="card-header">Enregistement des fiches de sortie</div>
+            <div class="card-body">
+                <section id="basic-horizontal-layouts">
+                    <form class="form form-horizontal" method="post" th:action="@{/ficheDeSortieSave}">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Conducteur</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group has-icon-left">
+                                        <div class="position-relative">
+                                            <select class="form-select" name="conducteur">
+                                                <option>Selectionnez un conducteur</option>
+                                                <th:block th:each="conducteur:${conducteur}">
+                                                    <option th:text="${conducteur.prenom}" th:value="${conducteur.id}"></option>
+                                                </th:block>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Véhicule</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group has-icon-left">
+                                        <div class="position-relative">
+                                            <select class="form-select" name="vehicule">
+                                                <option>Selectionnez un véhicule</option>
+                                                <th:block th:each="vehicule:${vehicule}">
+                                                    <option th:text="${vehicule.immatriculation}" th:value="${vehicule.id}"></option>
+                                                </th:block>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Code</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group has-icon-left">
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" name="code" th:value="${fds.code}" placeholder="Code">
+                                            <div class="form-control-icon">
+                                                <i data-feather="user"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Lieu de départ</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group has-icon-left">
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" name="lieuDepart" th:value="${fds.lieuDepart}" placeholder="Lieu de départ">
+                                            <div class="form-control-icon">
+                                                <i data-feather="mail"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Lieu de Destination</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group has-icon-left">
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" name="lieuDestination" th:value="${fds.lieuDestination}" placeholder="Lieu de destination">
+                                            <div class="form-control-icon">
+                                                <i data-feather="mail"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Nombre de litre</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group has-icon-left">
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" name="nombreLitre" th:value="${fds.nombreLitre}" placeholder="Nombre de litre">
+                                            <div class="form-control-icon">
+                                                <i data-feather="mail"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-end ">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+            <div class="card-footer">copyright @ mamadou bhoye diallo 2022</div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

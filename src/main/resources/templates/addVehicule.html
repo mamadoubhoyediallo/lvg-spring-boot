@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+              xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+              layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div layout:fragment="content1">
+        <section class="section">
+            <div class="card col-md-9">
+                <div class="card-header">Enregistement des conducteurs</div>
+                <div class="card-body">
+                    <section id="basic-horizontal-layouts">
+                        <form class="form form-horizontal" method="post" th:action="@{/saveVehicule}">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Marque</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" name="marque" th:value="${vehicule.marque}" placeholder="Marque">
+                                                <div class="form-control-icon">
+                                                    <i data-feather="user"></i>
+                                                </div>
+                                                <div class="alert alert-danger alert-dismissible fade show" th:errors="${vehicule.marque}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Modèle</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" name="modele" th:value="${vehicule.modele}" placeholder="Modele">
+                                                <div class="form-control-icon">
+                                                    <i data-feather="mail"></i>
+                                                </div>
+                                                <div class="alert alert-danger alert-dismissible fade show" th:errors="${vehicule.modele}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Immatriculation</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <input type="text" class="form-control" name="immatriculation" th:value="${vehicule.immatriculation}" placeholder="Immatriculation">
+                                                <div class="form-control-icon">
+                                                    <i data-feather="mail"></i>
+                                                </div>
+                                                <div class="alert alert-danger alert-dismissible fade show" th:errors="${vehicule.immatriculation}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end ">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+                <div class="card-footer">copyright @ mamadou bhoye diallo 2022</div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
